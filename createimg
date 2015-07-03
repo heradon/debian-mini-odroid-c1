@@ -159,8 +159,8 @@ if [ "$root_dev" != "" ]; then
 else
 	sed -e "s/\${BOOT_UUID}/$boot_uuid/" -e "s/\${ROOT_DEV}/UUID=$root_uuid/" boot.ini.template > mnt/boot.ini
 fi
-cp -rp $boot_dir/* mnt/ 2> /dev/null
-cp -p $ramfs_file mnt/ 2> /dev/null
+cp -avrp $boot_dir/* mnt/
+cp -avp $ramfs_file mnt/
 if [ -x "./createimg-bootfs-post" ] ; then
 	./createimg-bootfs-post mnt/
 fi
